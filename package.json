@@ -1,0 +1,27 @@
+{
+    "name": "cse499envelopes",
+    "version": "1.0.0",
+    "description": "Envelopes Budgeting Web App",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Etrix06/cse499Envelopes.git"
+    },
+    "author": "Erik Alcala",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Etrix06/cse499Envelopes/issues"
+    },
+    "homepage": "https://github.com/Etrix06/cse499Envelopes#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.0",
+        "express": "^4.17.3"
+    }
+}
