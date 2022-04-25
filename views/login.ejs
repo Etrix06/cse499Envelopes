@@ -1,34 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
+<%- include('./includes/head.ejs') %>
 
-<body>
+    <body>
 
-    <nav>
-        <div class="site-title">
-            <a href="/">
-                <h1>Envelopes</h1>
-            </a>
-            <p>For budgeting made easy</p>
-        </div>
-        <ul>
-            <li><a href="/">Envelopes</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Signup</a></li>
-            <li><a href="/about">About us</a></li>
-        </ul>
-    </nav>
+        <%- include('./includes/nav.ejs') %>
 
-    <div class="login content">
-        <h2>Login</h2>
-    </div>
-
-</body>
+            <div class="login content">
+                <h2>Login</h2>
+            </div>
+            <%- include('./includes/footer.ejs') %>
+    </body>
 
 </html>
