@@ -14,6 +14,9 @@ app.post('/envelope', (req, res, next) => {
     res.redirect('/');
 });
 
+//middleware and Static files
+app.use(express.static('public'));
+
 app.get('/', (req, res, next) => {
     const testEnvelopes = [
         { category: 'Eating Out', budgeted: 600, remaining: 450 },
