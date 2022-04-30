@@ -35,16 +35,18 @@
                         <h3 class="category">
                             <%= envelope.category %>
                         </h3>
-                        <div class="wrapper">
-                            <div class="lid one"></div>
-                            <div class="lid two"></div>
-                            <div class="envelope"></div>
-                            <div class="letter">
-                                <p>$
-                                    <%= envelope.balance %>
-                                </p>
+                        <a href="/envelopes/details">
+                            <div class="wrapper">
+                                <div class="lid one"></div>
+                                <div class="lid two"></div>
+                                <div class="envelope"></div>
+                                <div class="letter">
+                                    <p>$
+                                        <%= envelope.balance %>
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                         <p class="remaining">$
                             <%= envelope.balance %> remaining</p>
                         <p class="budgeted">from $
