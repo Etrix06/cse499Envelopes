@@ -194,6 +194,7 @@ textarea {
     width: 80%;
     height: 80%;
     background-color: white;
+    border: 1px solid #3760C9;
     border-radius: 15px;
     z-index: 2;
     transition: 0.5s;
@@ -204,6 +205,11 @@ textarea {
     font-size: 30px;
     margin-top: 30px;
     color: #3B4049;
+}
+
+.letter h6 {
+    text-align: center;
+    font-size: 15px;
 }
 
 .wrapper:hover .lid.one {

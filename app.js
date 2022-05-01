@@ -10,7 +10,7 @@ const app = express();
 //connect to mongodb
 const MONGODB_URI = process.env.MONGODB_URI;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => app.listen(3000))
+    .then((result) => app.listen(process.env.PORT || 3000))
     .then(console.log('Listening on 3000'))
     .then(console.log('Connected to MongoDB'))
     .catch((err) => console.log(err));
