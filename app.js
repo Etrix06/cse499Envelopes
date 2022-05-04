@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
-const Envelope = require('./models/envelope');
+
 const { render } = require('express/lib/response');
+const envelopeRoutes = require('./routes/envelopeRoutes');
 
 //express app
 const app = express();
@@ -30,45 +31,6 @@ app.post('/envelope', (req, res, next) => {
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-/*
-//testing mongoose, mongo, and routes
-app.get('/add-envelope', (req, res) => {
-    const envelope = new Envelope({
-        category: 'Entertainment',
-        budgeted: 200,
-        balance: 130
-    });
-
-    envelope.save()
-        .then((results) => {
-            res.send(results);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-app.get('/all-envelopes', (req, res) => {
-    Envelope.find()
-        .then((results) => {
-            res.send(results);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-app.get('/single-envelope', (req, res) => {
-    Envelope.findById('626d7ad062c04d9b761ec6c7')
-        .then((result) => {
-            res.send(result)
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-*/
-
 app.get('/', (req, res, next) => {
     res.redirect('/envelopes');
 });
@@ -87,55 +49,7 @@ app.get('/about', (req, res, next) => {
 
 
 //envelope routes
-app.get('/envelopes', (req, res, next) => {
-    Envelope.find() // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
-        .then((result) => {
-            res.render('index', { title: 'All Envelopes', envelopes: result })
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-app.post('/envelopes', (req, res) => {
-    const envelope = new Envelope(req.body);
-    envelope.save()
-        .then((result) => {
-            res.redirect('/envelopes');
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-});
-
-app.get('/envelopes/add-envelope', (req, res, next) => {
-    res.render('add-envelope', { title: 'Add Envelope' });
-});
-
-
-app.get('/envelopes/:id', (req, res) => {
-    const id = req.params.id;
-    Envelope.findById(id)
-        .then(result => {
-            res.render('details', { envelope: result, title: 'Envelope Details' });
-        })
-        .catch(err => {
-            console.log(err);
-        });
-});
-
-app.delete('/envelopes/:id', (req, res) => {
-    const id = req.params.id;
-
-    Envelope.findByIdAndDelete(id)
-        .then(result => {
-            res.json({ redirect: '/envelopes' });
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
-});
+app.use(envelopeRoutes);
 
 
 //404 Page
