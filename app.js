@@ -49,7 +49,7 @@ app.get('/about', (req, res, next) => {
 
 
 //envelope routes
-app.use(envelopeRoutes);
+app.use('/envelopes', envelopeRoutes);
 
 
 //404 Page
