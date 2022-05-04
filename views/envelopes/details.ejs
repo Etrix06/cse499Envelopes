@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<%- include('./includes/head.ejs') %>
+<%- include('../includes/head.ejs') %>
 
     <body>
 
-        <%- include('./includes/nav.ejs') %>
+        <%- include('../includes/nav.ejs') %>
 
             <div class="details content">
                 <h2>
@@ -18,9 +18,9 @@
                     </p>
 
                 </div>
-                <a class="delete" data-doc="<%= envelope._id  %>">Delete Envelope</a>
+                <a class="delete" data-doc="<%= envelope._id  %>"><img src="/trashcan.svg" alt="Delete Envelope">Delete Envelope</a>
             </div>
-            <%- include('./includes/footer.ejs') %>
+            <%- include('../includes/footer.ejs') %>
                 <script>
                     const trashcan = document.querySelector('a.delete');
 

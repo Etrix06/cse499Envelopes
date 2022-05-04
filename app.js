@@ -31,6 +31,8 @@ app.post('/envelope', (req, res, next) => {
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
+
+
 app.get('/', (req, res, next) => {
     res.redirect('/envelopes');
 });
