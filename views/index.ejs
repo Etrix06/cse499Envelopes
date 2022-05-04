@@ -10,9 +10,6 @@
             <div class="envelopes content">
                 <h2>Your Envelopes</h2>
 
-
-
-
                 <!--
                 <div class="letter-image">
                     <div class="animated-mail">
@@ -35,7 +32,7 @@
                         <h3 class="category">
                             <%= envelope.category %>
                         </h3>
-                        <a href="/envelopes/details">
+                        <a class="single" href="/envelopes/<%= envelope._id %>">
                             <div class="wrapper">
                                 <div class="lid one"></div>
                                 <div class="lid two"></div>

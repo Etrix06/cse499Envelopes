@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const Envelope = require('./models/envelope');
+const { render } = require('express/lib/response');
 
 //express app
 const app = express();
@@ -27,6 +28,7 @@ app.post('/envelope', (req, res, next) => {
 
 //middleware and Static files
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
 
 /*
 //testing mongoose, mongo, and routes
@@ -95,9 +97,46 @@ app.get('/envelopes', (req, res, next) => {
         });
 });
 
+app.post('/envelopes', (req, res) => {
+    const envelope = new Envelope(req.body);
+    envelope.save()
+        .then((result) => {
+            res.redirect('/envelopes');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
 app.get('/envelopes/add-envelope', (req, res, next) => {
     res.render('add-envelope', { title: 'Add Envelope' });
 });
+
+
+app.get('/envelopes/:id', (req, res) => {
+    const id = req.params.id;
+    Envelope.findById(id)
+        .then(result => {
+            res.render('details', { envelope: result, title: 'Envelope Details' });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+
+app.delete('/envelopes/:id', (req, res) => {
+    const id = req.params.id;
+
+    Envelope.findByIdAndDelete(id)
+        .then(result => {
+            res.json({ redirect: '/envelopes' });
+        })
+        .catch(err => {
+            console.log(err);
+        });
+
+});
+
 
 //404 Page
 

@@ -8,14 +8,19 @@
         <%- include('./includes/nav.ejs') %>
 
             <div class="add-envelope content">
-                <form>
-                    <label for="title">Category Name:</label>
-                    <input type="text" id="title" required>
+                <form action="/envelopes" method="POST">
+                    <label for="category">Category Name:</label>
+                    <input type="text" id="category" name="category" required>
                     <label for="budgeted">Amount Budgeted</label>
-                    <input type="number" id="budgeted" required>
-                    <label for="remaining">Amount Remaining</label>
-                    <input type="number" id="remaining" required>
-                    <button>Create</button>
+                    <input type="number" id="budgeted" name="budgeted" required>
+                    <label for="balance">Amount Remaining</label>
+                    <input type="number" id="balance" name="balance" required>
+                    <button>Create<div class="wrapper-button">
+                        <div class="lid one-button"></div>
+                        
+                        <div class="envelope-button"></div>
+                        
+                    </div></button>
                 </form>
             </div>
             <%- include('./includes/footer.ejs') %>

@@ -1,228 +1,290 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
-body {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 20px;
-    font-family: 'Noto Serif', serif;
-    max-width: 1200px;
-}
-
-p,
-h1,
-h2,
-h3,
-a,
-ul {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    color: #222;
-}
-
-
-/* nav & footer styles */
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 60px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    text-transform: uppercase;
-}
-
-nav ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-nav li {
-    list-style-type: none;
-    margin-left: 20px;
-}
-
-nav h1 {
-    font-size: 3em;
-}
-
-nav p,
-nav a {
-    color: #777;
-    font-weight: 300;
-}
-
-footer {
-    color: #777;
-    text-align: center;
-    margin: 80px auto 20px;
-}
-
-h2 {
-    margin-bottom: 40px;
-}
-
-h3 {
-    text-transform: capitalize;
-    margin-bottom: 8px;
-}
-
-.content {
-    margin-left: 20px;
-}
-
-
-/* index styles */
-
-.category {
-    color: #0011ff;
-    margin-top: 20px;
-}
-
-.link {
-    color: #777;
-    font-weight: 300;
-    text-transform: uppercase;
-}
-
-
-/* details styles */
-
-
-/* create styles */
-
-.add-envelope form {
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.add-envelope input,
-.add-envelope textarea {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 8px;
-}
-
-.add-envelope label {
-    display: block;
-    margin-top: 24px;
-}
-
-textarea {
-    height: 120px;
-}
-
-.add-envelope button {
-    margin-top: 20px;
-    background: crimson;
-    color: white;
-    padding: 6px;
-    border: 0;
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-
-/* Envelope opening*/
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.wrapper {
-    height: 200px;
-    width: 300px;
-    background-color: #3760C9;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    z-index: 0;
-}
-
-.lid {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    border-right: 150px solid transparent;
-    border-bottom: 100px solid transparent;
-    border-left: 150px solid transparent;
-    transform-origin: top;
-    transition: transform 0.25s linear;
-}
-
-
-/* Lid when closed */
-
-.lid.one {
-    border-top: 100px solid #658ced;
-    transform: rotateX(0deg);
-    z-index: 3;
-    transition-delay: 0.75s;
-}
-
-
-/* Lid when opened */
-
-.lid.two {
-    border-top: 100px solid #3760C9;
-    transform: rotateX(90deg);
-    z-index: 1;
-    transition-delay: 0.5s;
-}
-
-.envelope {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    border-top: 100px solid transparent;
-    border-right: 150px solid #C4DFF0;
-    border-bottom: 100px solid #C4DFF0;
-    border-left: 150px solid #a4d4f2;
-    z-index: 3;
-}
-
-.letter {
-    position: absolute;
-    top: 0;
-    width: 80%;
-    height: 80%;
-    background-color: white;
-    border: 1px solid #3760C9;
-    border-radius: 15px;
-    z-index: 2;
-    transition: 0.5s;
-}
-
-.letter p {
-    text-align: center;
-    font-size: 30px;
-    margin-top: 30px;
-    color: #3B4049;
-}
-
-.letter h6 {
-    text-align: center;
-    font-size: 15px;
-}
-
-.wrapper:hover .lid.one {
-    transform: rotateX(90deg);
-    transition-delay: 0s;
-}
-
-.wrapper:hover .lid.two {
-    transform: rotateX(180deg);
-    transition-delay: 0.25s;
-}
-
-.wrapper:hover .letter {
-    transform: translateY(-50px);
-    transition-delay: 0.5s;
-}
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+    body {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 0 20px;
+        font-family: 'Noto Serif', serif;
+        max-width: 1200px;
+    }
+    
+    p,
+    h1,
+    h2,
+    h3,
+    a,
+    ul {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        color: #222;
+    }
+    /* nav & footer styles */
+    
+    nav {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        text-transform: uppercase;
+    }
+    
+    nav ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    
+    nav li {
+        list-style-type: none;
+        margin-left: 20px;
+    }
+    
+    nav h1 {
+        font-size: 3em;
+    }
+    
+    nav p,
+    nav a {
+        color: #777;
+        font-weight: 300;
+    }
+    
+    footer {
+        color: #777;
+        text-align: center;
+        margin: 80px auto 20px;
+    }
+    
+    h2 {
+        margin-bottom: 40px;
+    }
+    
+    h3 {
+        text-transform: capitalize;
+        margin-bottom: 8px;
+    }
+    
+    .content {
+        margin-left: 20px;
+    }
+    /* index styles */
+    
+    .envelopes a {
+        display: block;
+        margin: 40px 0;
+        padding-left: 30px;
+    }
+    
+    .category {
+        color: #0011ff;
+        margin-top: 20px;
+    }
+    
+    .link {
+        color: #777;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+    /* details styles */
+    
+    .details {
+        position: relative;
+    }
+    
+    .delete {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        padding: 8px;
+    }
+    
+    .delete:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px black;
+    }
+    /* create styles */
+    
+    .add-envelope form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .add-envelope input,
+    .add-envelope textarea {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 8px;
+    }
+    
+    .add-envelope label {
+        display: block;
+        margin-top: 24px;
+    }
+    
+    textarea {
+        height: 120px;
+    }
+    
+    .add-envelope button {
+        margin-top: 20px;
+        background: #3760C9;
+        color: white;
+        padding: 6px;
+        border: 0;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+    /* Envelope opening*/
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    .wrapper {
+        height: 200px;
+        width: 300px;
+        background-color: #3760C9;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        z-index: 0;
+    }
+    
+    .lid {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border-right: 150px solid transparent;
+        border-bottom: 100px solid transparent;
+        border-left: 150px solid transparent;
+        transform-origin: top;
+        transition: transform 0.25s linear;
+    }
+    /* Lid when closed */
+    
+    .lid.one {
+        border-top: 100px solid #658ced;
+        transform: rotateX(0deg);
+        z-index: 3;
+        transition-delay: 0.75s;
+    }
+    /* Lid when opened */
+    
+    .lid.two {
+        border-top: 100px solid #3760C9;
+        transform: rotateX(90deg);
+        z-index: 1;
+        transition-delay: 0.5s;
+    }
+    
+    .envelope {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border-top: 100px solid transparent;
+        border-right: 150px solid #C4DFF0;
+        border-bottom: 100px solid #C4DFF0;
+        border-left: 150px solid #a4d4f2;
+        z-index: 3;
+    }
+    
+    .letter {
+        position: absolute;
+        top: 0;
+        width: 80%;
+        height: 80%;
+        background-color: white;
+        border: 1px solid #3760C9;
+        border-radius: 15px;
+        z-index: 2;
+        transition: 0.5s;
+    }
+    
+    .letter p {
+        text-align: center;
+        font-size: 30px;
+        margin-top: 30px;
+        color: #3B4049;
+    }
+    
+    .letter h6 {
+        text-align: center;
+        font-size: 15px;
+    }
+    
+    .wrapper:hover .lid.one {
+        transform: rotateX(90deg);
+        transition-delay: 0s;
+    }
+    
+    .wrapper:hover .lid.two {
+        transform: rotateX(180deg);
+        transition-delay: 0.25s;
+    }
+    
+    .wrapper:hover .letter {
+        transform: translateY(-50px);
+        transition-delay: 0.5s;
+    }
+    /* Envelope button */
+    
+    .wrapper-button {
+        height: 20px;
+        width: 30px;
+        background-color: #3760C9;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        z-index: 0;
+    }
+    
+    .lid {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border-right: 15px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 15px solid transparent;
+        transform-origin: top;
+        transition: transform 0.25s linear;
+    }
+    /* Lid when closed */
+    
+    .lid.one-button {
+        border-top: 10px solid #658ced;
+        transform: rotateX(0deg);
+        z-index: 3;
+        transition-delay: 0.75s;
+    }
+    /* Lid when opened */
+    
+    .lid.two-button {
+        border-top: 100px solid #658ced;
+        transform: rotateX(90deg);
+        z-index: 1;
+        transition-delay: 0.5s;
+    }
+    
+    .envelope-button {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border-top: 10px solid transparent;
+        border-right: 15px solid #C4DFF0;
+        border-bottom: 10px solid #C4DFF0;
+        border-left: 15px solid #a4d4f2;
+        z-index: 3;
+    }
