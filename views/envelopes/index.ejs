@@ -29,30 +29,44 @@
                     -->
                 <% if (envelopes.length > 0) { %>
                     <% envelopes.forEach(envelope => { %>
-                        <h3 class="category">
-                            <%= envelope.category %>
-                        </h3>
-                        <a class="single" href="/envelopes/<%= envelope._id %>">
-                            <div class="wrapper">
-                                <div class="lid one"></div>
-                                <div class="lid two"></div>
-                                <div class="envelope"></div>
-                                <div class="letter">
-                                    <p>$
-                                        <%= envelope.balance %>
-                                    </p>
-                                    <h6>Click envelope to input transaction.</h6>
+                        <div class="inline">
+                            <h3 class="category">
+                                <%= envelope.category %>
+                            </h3>
+                            <a class="single" href="/envelopes/<%= envelope._id %>">
+                                <div class="wrapper">
+                                    <div class="lid one"></div>
+                                    <div class="lid two"></div>
+                                    <div class="envelope"></div>
+                                    <div class="letter">
+                                        <p>$
+                                            <%= envelope.balance %>
+                                        </p>
+                                        <h6>Click envelope to input transaction.</h6>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <p class="remaining">$
-                            <%= envelope.balance %> remaining</p>
-                        <p class="budgeted">from $
-                            <%=envelope.budgeted %> Budgeted</p>
+                            </a>
+                            <p class="remaining">$
+                                <%= envelope.balance %> remaining</p>
+                            <p class="budgeted">from $
+                                <%=envelope.budgeted %> Budgeted</p>
+                        </div>
                         <% }) %>
+
                             <% } %>
-                                <br>
-                                <a class="link" href="/envelopes/add-envelope">create envelope +</a>
+                                <div class="inline">
+                                    <a class="link" href="/envelopes/add-envelope">
+                                        <div class="empty-wrapper">
+                                            <div class="empty-lid empty-one"></div>
+                                            <div class="empty-lid empty-two"></div>
+                                            <div class="empty-envelope"></div>
+
+                                            <h6>Create new envelope</h6>
+
+                                        </div>create envelope +</a>
+                                    <p class="white">Click to Create new envelope.</p>
+                                </div>
+
             </div>
             <%- include('../includes/footer.ejs') %>
     </body>
