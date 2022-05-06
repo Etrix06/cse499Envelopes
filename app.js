@@ -4,7 +4,10 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const { render } = require('express/lib/response');
+
+//routes
 const envelopeRoutes = require('./routes/envelopeRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 //express app
 const app = express();
@@ -30,6 +33,7 @@ app.post('/envelope', (req, res, next) => {
 //middleware and Static files
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 
@@ -52,6 +56,9 @@ app.get('/about', (req, res, next) => {
 
 //envelope routes
 app.use('/envelopes', envelopeRoutes);
+
+//auth routes
+app.use(authRoutes);
 
 
 //404 Page
