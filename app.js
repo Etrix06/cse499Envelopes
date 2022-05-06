@@ -9,6 +9,7 @@ const { render, cookie } = require('express/lib/response');
 //routes
 const envelopeRoutes = require('./routes/envelopeRoutes');
 const authRoutes = require('./routes/authRoutes');
+const { requireAuth, checkUser } = require('./middleware/is-auth');
 
 //express app
 const app = express();
@@ -37,10 +38,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-
+//routes
+app.get('*', checkUser);
 
 app.get('/', (req, res, next) => {
-    res.redirect('/envelopes');
+    res.render('home', { title: 'Home' });
 });
 
 app.get('/login', (req, res, next) => {
@@ -56,8 +58,9 @@ app.get('/about', (req, res, next) => {
 });
 
 
+
 //envelope routes
-app.use('/envelopes', envelopeRoutes);
+app.use('/envelopes', requireAuth, envelopeRoutes);
 
 //auth routes
 app.use(authRoutes);

@@ -17,7 +17,7 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" required>
                     <div class="password error"></div>
-                    <button class="btn btn-primary">Log in</button>
+                    <button class="btn-primary">Log in</button>
 
                 </form>
             </div>
@@ -57,7 +57,7 @@
                                 passwordError.textContent = data.errors.password;
                             }
                             if (data.user) {
-                                location.assign('/');
+                                location.assign('/envelopes');
                             }
                         } catch (err) {
                             console.log(err);

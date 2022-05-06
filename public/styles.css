@@ -5,6 +5,7 @@
         padding: 0 20px;
         font-family: 'Noto Serif', serif;
         max-width: 1200px;
+        background: #fafafade;
     }
     
     p,
@@ -60,7 +61,7 @@
         width: 360px;
         margin: 0 auto;
         padding: 30px;
-        box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: 1px 2px 3px #000000d6;
         border-radius: 10px;
         background: white;
     }
@@ -78,11 +79,15 @@
         margin: 20px 0 10px;
     }
     
-    button {
-        margin-top: 30px;
+    .btn {
         border-radius: 36px;
         background: #0011ff;
         color: white;
+    }
+    
+    button {
+        margin-top: 30px;
+        border-radius: 36px;
         border: 0;
         text-transform: uppercase;
         font-weight: 700;
@@ -192,8 +197,6 @@
     
     .add-envelope button {
         margin-top: 20px;
-        background: #3760C9;
-        color: white;
         padding: 6px;
         border: 0;
         font-size: 1.2em;
@@ -215,6 +218,7 @@
         display: flex;
         justify-content: center;
         z-index: 0;
+        box-shadow: 1px 2px 3px #000000d6;
     }
     
     .empty-wrapper {
@@ -226,6 +230,7 @@
         justify-content: center;
         z-index: 0;
         opacity: 0.3;
+        box-shadow: 1px 2px 3px #000000d6;
     }
     
     .lid {
