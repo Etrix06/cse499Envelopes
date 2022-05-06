@@ -8,9 +8,63 @@
         <%- include('./includes/nav.ejs') %>
 
             <div class="signup content">
-                <h2>Sign Up</h2>
+                <form>
+                    <h2>Sign up</h2>
+                    <label for="email">Email</label>
+                    <input type="text" name="email" required>
+                    <div class="email error"></div>
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" required>
+                    <div class="password error"></div>
+                    <button class="btn btn-primary">Sign up</button>
+
+                </form>
             </div>
             <%- include('./includes/footer.ejs') %>
+
+                <script>
+                    const form = document.querySelector('form');
+                    const emailError = document.querySelector('.email.error');
+                    const passwordError = document.querySelector('.password.error');
+
+                    form.addEventListener('submit', async(e) => {
+                        e.preventDefault();
+
+                        //reset errors
+                        emailError.textContent = '';
+                        passwordError.textContent = '';
+
+                        //get the values
+                        const email = form.email.value;
+                        const password = form.password.value;
+
+                        try {
+                            const res = await fetch('/signup', {
+                                method: 'POST',
+                                body: JSON.stringify({
+                                    email: email,
+                                    password: password
+                                }),
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            });
+                            const data = await res.json();
+                            console.log(data);
+                            if (data.errors) {
+                                emailError.textContent = data.errors.email; // more can be done here to show what form is in error
+                                passwordError.textContent = data.errors.password;
+                            }
+                            if (data.user) {
+                                location.assign('/');
+                            }
+                        } catch (err) {
+                            console.log(err);
+                        }
+
+                    });
+                </script>
     </body>
 
 </html>

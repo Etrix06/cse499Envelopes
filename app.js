@@ -1,9 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 
-const { render } = require('express/lib/response');
+const { render, cookie } = require('express/lib/response');
 
 //routes
 const envelopeRoutes = require('./routes/envelopeRoutes');
@@ -34,6 +35,7 @@ app.post('/envelope', (req, res, next) => {
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 
 
@@ -60,9 +62,7 @@ app.use('/envelopes', envelopeRoutes);
 //auth routes
 app.use(authRoutes);
 
-
 //404 Page
-
 app.use((req, res, next) => {
     res.status(404).render('404', { title: '404 Page Not Found' });
 });
