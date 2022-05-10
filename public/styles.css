@@ -325,7 +325,7 @@
         border-radius: 15px;
         z-index: 2;
         transition: 0.5s;
-        background-image: url(./USD.png);
+        background-image: url(./Money.png);
     }
     
     .empty-letter {
@@ -357,13 +357,17 @@
         text-align: center;
         font-size: 40px;
         margin-top: 15px;
-        color: #eef8ee;
+        color: white;
+        margin: 2px;
+        padding: 2px;
     }
     
     .letter h6 {
         text-align: center;
         font-size: 15px;
-        color: #eef8ee;
+        color: yellow;
+        margin: 2px;
+        padding: 2px;
     }
     
     .wrapper:hover .lid.one {
