@@ -16,25 +16,8 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Please enter a password'],
         minlength: [6, 'Minimum password length is 6 characters']
-    },
-    envelope: {
-        envelopes: [{
-            category: {
-                type: String,
-                required: [true, 'Please enter envelope name']
-            },
-            budgeted: {
-                type: Number,
-                required: [true, 'Please enter amount to be budgeted']
-            },
-            balance: {
-                type: Number,
-                required: [true, 'Please enter amount left in envelope, usually the same as budgeted amount']
-            }
-        }, { timestamps: true }]
+
     }
-
-
 });
 /*
 // functions after doc is saved to mongoDB
