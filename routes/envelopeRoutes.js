@@ -1,9 +1,10 @@
 const express = require('express');
 const envelopeController = require('../controllers/envelopeController');
+const authController = require('../controllers/authController');
 
 const router = express.Router();
 
-router.get('/', envelopeController.envelope_index);
+router.get('/', authController.envelope_index);
 
 router.post('/', envelopeController.envelope_create_post);
 

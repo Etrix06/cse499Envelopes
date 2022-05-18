@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
+const { stringify } = require('nodemon/lib/utils');
 
 const Schema = mongoose.Schema;
 
@@ -16,7 +17,21 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Please enter a password'],
         minlength: [6, 'Minimum password length is 6 characters']
-    }
+    },
+    envelopes: [{
+        category: {
+            type: String,
+            required: true
+        },
+        budgeted: {
+            type: String,
+            required: true
+        },
+        balance: {
+            type: String,
+            required: true
+        }
+    }]
 });
 /*
 // functions after doc is saved to mongoDB

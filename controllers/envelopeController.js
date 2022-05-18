@@ -1,7 +1,7 @@
 const Envelope = require('../models/envelope');
 
 
-
+/*
 const envelope_index = (req, res) => {
     Envelope.find() // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
         .then((result) => {
@@ -11,7 +11,7 @@ const envelope_index = (req, res) => {
             console.log(err);
         })
 }
-
+*/
 const envelope_details = (req, res) => {
     const id = req.params.id;
     Envelope.findById(id)
@@ -51,7 +51,7 @@ const envelope_delete = (req, res) => {
 }
 
 module.exports = {
-    envelope_index,
+    /*envelope_index,*/
     envelope_details,
     envelope_create_get,
     envelope_create_post,

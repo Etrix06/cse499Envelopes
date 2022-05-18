@@ -80,3 +80,15 @@ module.exports.logout_get = (req, res) => {
     res.cookie('jwt', '', { maxAge: 1 });
     res.redirect('/');
 }
+
+module.exports.envelope_index = (req, res) => {
+
+    User.find({ envelopes: [{ category: 'Movies' }] }).exec() // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
+        .then((result) => {
+            console.log(result)
+            res.render('envelopes/index', { title: 'All Envelopes', envelopes: result })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
