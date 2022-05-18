@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 const bcrypt = require('bcrypt');
+const Envelope = require('../models/envelope');
 
 const Schema = mongoose.Schema;
 
@@ -16,8 +17,21 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Please enter a password'],
         minlength: [6, 'Minimum password length is 6 characters']
-
-    }
+    },
+    envelopes: [{
+        category: {
+            type: String,
+            required: [true, 'Please enter envelope name']
+        },
+        budgeted: {
+            type: Number,
+            required: [true, 'Please enter amount to be budgeted']
+        },
+        balance: {
+            type: Number,
+            required: [true, 'Please enter amount left in envelope, usually the same as budgeted amount']
+        }
+    }, { timestamps: true }]
 
 
 });
@@ -49,6 +63,6 @@ userSchema.statics.login = async function(email, password) {
     throw Error('Incorrect email');
 }
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

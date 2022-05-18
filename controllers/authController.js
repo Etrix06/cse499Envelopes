@@ -47,10 +47,11 @@ module.exports.login_get = (req, res) => {
 }
 
 module.exports.signup_post = async(req, res) => {
-    const { email, password } = req.body;
+    const { email, password, envelopes } = req.body;
+    //const envelopes = [{ category: 'food', budgeted: 600, balance: 480 }, { category: 'Movies', budgeted: 150, balance: 70 }]
 
     try {
-        const user = await User.create({ email, password });
+        const user = await User.create({ email, password, envelopes });
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 }); // cookies are in milliseconds so multipy by 1000
         res.status(201).json({ user: user._id });

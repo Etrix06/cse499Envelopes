@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('../models/User');
 const Schema = mongoose.Schema;
 
 const envelopeSchema = new Schema({
@@ -13,6 +14,10 @@ const envelopeSchema = new Schema({
     balance: {
         type: Number,
         required: [true, 'Please enter amount left in envelope, usually the same as budgeted amount']
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 }, { timestamps: true });
 

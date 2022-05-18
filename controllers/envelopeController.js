@@ -1,4 +1,5 @@
 const Envelope = require('../models/envelope');
+const User = require('../models/User');
 
 
 
@@ -10,10 +11,12 @@ const envelope_index = (req, res) => {
         .catch((err) => {
             console.log(err);
         })
+
 }
 
 const envelope_details = (req, res) => {
     const id = req.params.id;
+    console.log('id:', id);
     Envelope.findById(id)
         .then(result => {
             res.status(404).render('envelopes/details', { envelope: result, title: 'Envelope Details' });
