@@ -4,10 +4,12 @@ const User = require('../models/User');
 
 
 const envelope_index = (req, res) => {
-    User.find() // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
+    User.find({ _id: '6283226e40647e846a534075' }) // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
         .then((result) => {
             console.log('this is in envelopeController');
-            res.render('envelopes/index', { title: 'All Envelopes', envelopes: result })
+            console.log(result);
+            res.send(result);
+            //res.render('envelopes/index', { title: 'All Envelopes', envelopes: result })
         })
         .catch((err) => {
             console.log(err);

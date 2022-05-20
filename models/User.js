@@ -18,7 +18,18 @@ const userSchema = new Schema({
         minlength: [6, 'Minimum password length is 6 characters']
     },
     envelopes: [{
-        type: String
+        category: {
+            type: String,
+            required: true
+        },
+        budgeted: {
+            type: String,
+            required: true
+        },
+        balance: {
+            type: String,
+            required: true
+        }
     }]
 });
 /*
