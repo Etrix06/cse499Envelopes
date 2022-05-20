@@ -43,6 +43,7 @@ app.get('*', checkUser);
 
 app.get('/', (req, res, next) => {
     res.render('home', { title: 'Home' });
+    console.log('This is inside app.js');
 });
 
 app.get('/login', (req, res, next) => {
@@ -59,7 +60,7 @@ app.get('/about', (req, res, next) => {
 
 
 
-//envelope routes
+//auth envelope routes
 app.use('/envelopes', requireAuth, envelopeRoutes);
 
 //auth routes
