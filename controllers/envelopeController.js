@@ -1,15 +1,15 @@
 //const Envelope = require('../models/envelope');
-const User = require('../models/User');
+const User = require('../models/user');
 
 
 
 const envelope_index = (req, res) => {
-    User.find({ _id: '6283226e40647e846a534075' }) // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
+    Envelope.find({}) // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
         .then((result) => {
             console.log('this is in envelopeController');
             console.log(result);
-            res.send(result);
-            //res.render('envelopes/index', { title: 'All Envelopes', envelopes: result })
+            //res.send(result);
+            res.render('envelopes/index', { title: 'All Envelopes', envelopes: result })
         })
         .catch((err) => {
             console.log(err);
@@ -18,7 +18,7 @@ const envelope_index = (req, res) => {
 
 const envelope_details = (req, res) => {
     const id = req.params.id;
-    User.findById(id)
+    Envelope.findById(id)
         .then(result => {
             res.status(404).render('envelopes/details', { envelope: result, title: 'Envelope Details' });
         })
@@ -45,7 +45,7 @@ const envelope_create_post = (req, res) => {
 const envelope_delete = (req, res) => {
     const id = req.params.id;
 
-    User.findByIdAndDelete(id)
+    Envelope.findByIdAndDelete(id)
         .then(result => {
             res.json({ redirect: '/envelopes' });
         })

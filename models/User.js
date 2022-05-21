@@ -17,20 +17,15 @@ const userSchema = new Schema({
         required: [true, 'Please enter a password'],
         minlength: [6, 'Minimum password length is 6 characters']
     },
-    envelopes: [{
-        category: {
-            type: String,
-            required: true
-        },
-        budgeted: {
-            type: String,
-            required: true
-        },
-        balance: {
-            type: String,
-            required: true
-        }
-    }]
+    budget: {
+        envelopes: [{
+            envelopeId: {
+                type: Schema.Types.ObjectId,
+                ref: 'Envelope',
+                required: true
+            }
+        }]
+    }
 });
 /*
 // functions after doc is saved to mongoDB
@@ -60,6 +55,6 @@ userSchema.statics.login = async function(email, password) {
     throw Error('Incorrect email');
 }
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

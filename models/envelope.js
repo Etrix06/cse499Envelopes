@@ -13,7 +13,13 @@ const envelopeSchema = new Schema({
     balance: {
         type: Number,
         required: [true, 'Please enter amount left in envelope, usually the same as budgeted amount']
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
+
 }, { timestamps: true });
 
 const Envelope = mongoose.model('Envelope', envelopeSchema);
