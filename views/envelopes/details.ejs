@@ -13,14 +13,35 @@
                     <%= envelope.category %>
                 </h2>
                 <div class="content">
-                    <p>
+                    <h2>
                         $
-                        <%=envelope.balance %> left
-                    </p>
+                        <%=envelope.balance %> <span class="invisible">----------</span>balance
+                    </h2>
+                    <h4>of</h4>
+                    <br>
+                    <h3>$
+                        <%=envelope.budgeted%> <span class="invisible">-----------</span>budgeted</h3>
 
                 </div>
-                <a class="delete" data-doc="<%= envelope._id  %>"><img src="/trashcan.svg" alt="Delete Envelope">Delete Envelope</a>
+
+
+
             </div>
+
+            <div class="add-transaction content">
+                <form action="/envelopes" method="POST">
+                    <h3>Enter Transaction</h3>
+                    <label for="amount">Amount:</label>
+                    <input type="number" id="amount" name="amount" required>
+                    <label for="nameOfTransaction">Name</label>
+                    <input type="text" id="nameOfTransaction" name="nameOfTransaction">
+                    <button class="btn-primary">Save</button>
+                </form>
+            </div>
+            <br>
+            <a class="transfer" href="/envelopes/transfer"><img src="/trashcan.svg" alt="Transfer Envelope">Transfer in Envelopes</a><br>
+            <a class="transaction" data-doc="<%= envelope._id  %>"><img src="/trashcan.svg" alt="Transactions">View Transactions</a><br>
+            <!-- <a class="delete" data-doc="<%= envelope._id  %>"><img src="/trashcan.svg" alt="Delete Envelope">Delete Envelope</a>-->
             <%- include('../includes/footer.ejs') %>
                 <script>
                     const trashcan = document.querySelector('a.delete');

@@ -12,6 +12,10 @@ const envelope_index = (req, res) => {
         })
 }
 
+const transfer_index = (req, res) => {
+    res.render('envelopes/transfer', { title: 'Transfers' });
+}
+
 const envelope_details = (req, res) => {
     const id = req.params.id;
     Envelope.findById(id)
@@ -52,6 +56,7 @@ const envelope_delete = (req, res) => {
 
 module.exports = {
     envelope_index,
+    transfer_index,
     envelope_details,
     envelope_create_get,
     envelope_create_post,
