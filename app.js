@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/envelope', (req, res, next) => {
-    console.log(req.body);
+    console.log('This is app.post', req.body);
     res.redirect('/');
 });
 

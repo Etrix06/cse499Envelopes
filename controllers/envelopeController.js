@@ -1,12 +1,14 @@
-//const Envelope = require('../models/envelope');
+const Envelope = require('../models/envelope');
 const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+
 
 
 
 const envelope_index = (req, res) => {
     Envelope.find({}) // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
         .then((result) => {
-            console.log('this is in envelopeController');
+            console.log();
             console.log(result);
             //res.send(result);
             res.render('envelopes/index', { title: 'All Envelopes', envelopes: result })
@@ -31,15 +33,22 @@ const envelope_create_get = (req, res) => {
     res.render('envelopes/add-envelope', { title: 'Add Envelope' });
 }
 
-const envelope_create_post = (req, res) => {
-    const user = new User(req.body);
-    user.save()
-        .then((result) => {
-            res.redirect('/envelopes');
-        })
-        .catch((err) => {
-            console.log(err);
-        });
+const envelope_create_post = (req, res, next) => {
+    const token = req.cookies.jwt;
+
+    console.log('this is token', token)
+    const envelope = new Envelope(req.body);
+    console.log('req user', res.locals.user);
+    console.log('this is the Envelope req.body in env controller ', req.body)
+        //console.log(id);
+        /*
+        envelope.save()
+            .then((result) => {
+                res.redirect('/envelopes');
+            })
+            .catch((err) => {
+                console.log(err);
+            }); */
 }
 
 const envelope_delete = (req, res) => {

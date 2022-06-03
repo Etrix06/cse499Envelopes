@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const envelopeSchema = new Schema({
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
     category: {
         type: String,
         required: [true, 'Please enter envelope name']
@@ -13,12 +18,8 @@ const envelopeSchema = new Schema({
     balance: {
         type: Number,
         required: [true, 'Please enter amount left in envelope, usually the same as budgeted amount']
-    },
-    userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
     }
+
 
 }, { timestamps: true });
 
