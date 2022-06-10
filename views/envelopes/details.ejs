@@ -29,7 +29,7 @@
             </div>
 
             <div class="add-transaction content">
-                <form action="/envelopes" method="POST">
+                <form action="/envelopes/add-transaction" method="POST">
                     <h3>Enter Transaction</h3>
                     <label for="amount">Amount:</label>
                     <input type="number" id="amount" name="amount" required>
@@ -40,7 +40,7 @@
             </div>
             <br>
             <a class="transfer" href="/envelopes/transfer"><img src="/trashcan.svg" alt="Transfer Envelope">Transfer in Envelopes</a><br>
-            <a class="transaction" data-doc="<%= envelope._id  %>"><img src="/trashcan.svg" alt="Transactions">View Transactions</a><br>
+            <a class="transaction" href="/envelopes/transactions"><img src="/trashcan.svg" alt="Transactions">View Transactions</a><br>
             <!-- <a class="delete" data-doc="<%= envelope._id  %>"><img src="/trashcan.svg" alt="Delete Envelope">Delete Envelope</a>-->
             <%- include('../includes/footer.ejs') %>
                 <script>

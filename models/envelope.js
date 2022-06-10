@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+//const Transaction = require('../models/transaction');
 
 const envelopeSchema = new Schema({
     category: {
@@ -13,9 +14,37 @@ const envelopeSchema = new Schema({
     balance: {
         type: Number,
         required: [true, 'Please enter amount left in envelope, usually the same as budgeted amount']
-    }
+    },
+    transactions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Transaction"
+    }]
 }, { timestamps: true });
 
-const Envelope = mongoose.model('Envelope', envelopeSchema);
+const transactionSchema = new Schema({
+    nameOfTransaction: {
+        type: String,
+        default: 'No Name Entered'
+    },
+    amount: {
+        type: Number,
+        required: [true, 'Please enter amount of transaction']
+    },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Envelope"
+    }
 
-module.exports = Envelope;
+}, { timestamps: true });
+
+
+const Envelope = mongoose.model('Envelope', envelopeSchema);
+const Transaction = mongoose.model('Transaction', transactionSchema);
+
+//module.exports = Envelope;
+//module.exports = Transaction;
+module.exports = {
+    Envelope,
+    Transaction,
+
+}

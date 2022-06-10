@@ -1,4 +1,5 @@
-const Envelope = require('../models/envelope');
+const { Envelope, Transaction } = require('../models/envelope');
+//const Transaction = require('../models/transaction');
 
 
 
@@ -16,7 +17,37 @@ const transfer_index = (req, res) => {
     res.render('envelopes/transfer', { title: 'Transfers' });
 }
 
+const transaction_index = (req, res) => {
+    //res.render('envelopes/transactions', { title: 'Transactions' });
+    console.log('params id', req.params.id);
+    Transaction.find() // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
+        //.populate('category')
+        .then((result) => {
+            console.log(result);
+            res.render('envelopes/transactions', { title: 'Transactions', transactions: result })
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+const transaction_create_post = (req, res) => {
+    //const id = req.params.id;
+    console.log(req.params.id, 'this is req params id');
+
+    const transaction = new Transaction(req.body);
+    console.log(req.body, 'This was the req Body');
+    transaction.save()
+        .then((result) => {
+            res.redirect('/envelopes');
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
 const envelope_details = (req, res) => {
+    console.log('req params id when entering envelope details', req.params.id);
     const id = req.params.id;
     Envelope.findById(id)
         .then(result => {
@@ -57,6 +88,8 @@ const envelope_delete = (req, res) => {
 module.exports = {
     envelope_index,
     transfer_index,
+    transaction_index,
+    transaction_create_post,
     envelope_details,
     envelope_create_get,
     envelope_create_post,
