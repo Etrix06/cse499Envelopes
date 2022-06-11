@@ -35,6 +35,9 @@
                     <input type="number" id="amount" name="amount" required>
                     <label for="nameOfTransaction">Name</label>
                     <input type="text" id="nameOfTransaction" name="nameOfTransaction">
+                    <input type="hidden" id="balance" name="balance" value="<%= envelope.balance%>">
+                    <input type="hidden" id="budgeted" name="budgeted" value="<%= envelope.budgeted%>">
+                    <input type="hidden" id="id" name="id" value="<%= envelope._id%>">
                     <button class="btn-primary">Save</button>
                 </form>
             </div>

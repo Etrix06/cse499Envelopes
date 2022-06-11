@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const envelopeSchema = new Schema({
     category: {
         type: String,
-        required: [true, 'Please enter envelope name']
+        required: [true, 'Please enter envelope name'],
+        unique: [true, 'This envelope already exists']
     },
     budgeted: {
         type: Number,
@@ -16,8 +17,9 @@ const envelopeSchema = new Schema({
         required: [true, 'Please enter amount left in envelope, usually the same as budgeted amount']
     },
     transactions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Transaction"
+        name: { type: String, default: "" },
+        amount: { type: Number, default: 0 }
+
     }]
 }, { timestamps: true });
 
