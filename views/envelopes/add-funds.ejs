@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head.ejs') %>
+
+    <body>
+
+        <%- include('../includes/nav.ejs') %>
+
+            <div class="add-envelope content">
+                <h1>Add Funds</h1>
+                <h5>How much money total will you be adding to envelopes?</h5>
+                <form action="/envelopes" method="POST">
+                    <label for="category">Category Name:</label>
+                    <input type="text" id="category" name="category" required>
+                    <label for="budgeted">Amount Budgeted</label>
+                    <input type="number" id="budgeted" name="budgeted" required>
+                    <label for="balance">Amount Remaining</label>
+                    <input type="number" id="balance" name="balance" required>
+                    <button class="btn-primary btn-lg">Add to<div class="wrapper-button">
+                        <div class="lid one-button"></div>
+                        
+                        <div class="envelope-button"></div>
+                        
+                    </div></button>
+                </form>
+            </div>
+            <%- include('../includes/footer.ejs') %>
+    </body>
+
+</html>

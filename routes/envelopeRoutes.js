@@ -9,6 +9,8 @@ router.post('/', envelopeController.envelope_create_post);
 
 router.get('/add-envelope', envelopeController.envelope_create_get);
 
+router.get('/add-funds', envelopeController.add_funds_get);
+
 router.get('/transfer', envelopeController.transfer_index);
 
 router.get('/transactions', envelopeController.transaction_index);

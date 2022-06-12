@@ -153,6 +153,20 @@
         font-weight: 300;
         text-transform: uppercase;
     }
+    
+    .right {
+        float: right;
+        color: green;
+        border: 3px solid green;
+        padding: 10px;
+    }
+    
+    .right:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px darkgreen;
+        color: white;
+        background-color: green;
+    }
     /* details styles */
     
     .details {
