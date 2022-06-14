@@ -36,6 +36,13 @@ const add_funds_get = (req, res) => {
 
 }
 
+const add_funds_post = (req, res) => {
+    const funds = req.body;
+    console.log('funds is: ', funds.total);
+    res.render('envelopes/distribute-funds', { title: 'Distribute Funds', total: funds.total });
+
+}
+
 const transaction_create_post = (req, res) => {
     console.log(req.body.id, 'This is the envelope id,  I hope.')
     console.log(req.body.balance, 'This was the req Body.balance');
@@ -98,6 +105,7 @@ module.exports = {
     transfer_index,
     transaction_index,
     add_funds_get,
+    add_funds_post,
     transaction_create_post,
     envelope_details,
     envelope_create_get,

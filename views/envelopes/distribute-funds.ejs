@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head.ejs') %>
+
+    <body>
+
+        <%- include('../includes/nav.ejs') %>
+
+            <div class="add-envelope content">
+                <h1>Funds to distribute: $
+                    <%= total %>
+                </h1>
+
+                <form action="/envelopes/add-funds" method="POST">
+                    <label for="total">Add to Which Envelope</label>
+                    <input type="hidden" value="<%= total%>" id="total">
+                    <select name="envelopes" id="envelopes" required>
+                        <option>Test1</option>
+                        <option>Test2</option>
+                        <option>Test3</option>
+                    </select>
+                    <button class="btn-primary btn-lg">Add to<div class="wrapper-button">
+                        <div class="lid one-button"></div>
+                        <div class="envelope-button"></div>  
+                    </div></button>
+                </form>
+                <button id="myBtn">Click</button>
+                <button id="subtractBtn">Subtract 50</button>
+                <div id="test" style="display: none;">Test</div>
+            </div>
+            <%- include('../includes/footer.ejs') %>
+                <script>
+                    document.getElementById("test").innerHTML = total.value;
+                    document.getElementById('myBtn').addEventListener("click", displayTotal);
+                    document.getElementById('subtractBtn').addEventListener("click", subtract50);
+
+                    function displayTotal() {
+                        document.getElementById("test").style.display = "block";
+                    }
+
+                    function subtract50() {
+                        document.getElementById("test").innerHTML = total.value - 50;
+                    }
+                </script>
+    </body>
+
+</html>
