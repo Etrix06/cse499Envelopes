@@ -60,7 +60,11 @@
             <script>
                 var envLength = "<%= envelopes.length %>";
                 var currentTotal = Number("<%= total %>");
+
+                // This displays the total on add funds screen
                 document.getElementById("distributionTotal").innerHTML = " " + "<%= total %>";
+                
+                // event listeners for all the dynamic envelopes  (I need a loop here.)
                 document.getElementById("testId1").addEventListener("focusout", updateTotal1);
                 document.getElementById("testId2").addEventListener("focusout", updateTotal2);
                 document.getElementById("testId3").addEventListener("focusout", updateTotal3);
