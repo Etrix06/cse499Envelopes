@@ -13,6 +13,8 @@ router.get('/add-funds', envelopeController.add_funds_get);
 
 router.post('/add-funds', envelopeController.add_funds_post);
 
+router.post('/distribute-funds', envelopeController.distribute_funds_post);
+
 router.get('/transfer', envelopeController.transfer_index);
 
 router.get('/transactions', envelopeController.transaction_index);

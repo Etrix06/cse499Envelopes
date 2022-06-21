@@ -168,6 +168,21 @@
         color: green;
         background-color: white;
     }
+    
+    #right {
+        margin-left: 90%;
+        color: white;
+        border: 3px solid green;
+        padding: 10px;
+        background-color: green;
+    }
+    
+    #right:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px darkgreen;
+        color: green;
+        background-color: white;
+    }
     /* details styles */
     
     .details {

@@ -6,6 +6,7 @@
     <body>
 
         <%- include('../includes/nav.ejs') %>
+            <a id="right" href="/envelopes/add-funds">Add Funds</a>
 
             <div class="details content">
 
@@ -14,8 +15,8 @@
                 </h2>
                 <div class="content">
                     <h2>
-                        $
-                        <%=envelope.balance %> <span class="invisible">----------</span>balance
+                        <span style="background-color: #2f2ff0; color: white; font-size: larger;">$
+                        <%=envelope.balance %></span> <span class="invisible">----------</span>balance
                     </h2>
                     <h4>of</h4>
                     <br>

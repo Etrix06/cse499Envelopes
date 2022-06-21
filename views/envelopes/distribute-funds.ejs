@@ -8,41 +8,102 @@
         <%- include('../includes/nav.ejs') %>
 
             <div class="add-envelope content">
-                <h1>Funds to distribute: $
-                    <%= total %>
+                <h1>Funds to distribute:
+                    <div>
+                        <!--<%= total %> -->
+                        $
+                        <span id="distributionTotal"></span>
+                    </div>
                 </h1>
 
-                <form action="/envelopes/add-funds" method="POST">
-                    <label for="total">Add to Which Envelope</label>
-                    <input type="hidden" value="<%= total%>" id="total">
-                    <select name="envelopes" id="envelopes" required>
-                        <option>Test1</option>
-                        <option>Test2</option>
-                        <option>Test3</option>
-                    </select>
-                    <button class="btn-primary btn-lg">Add to<div class="wrapper-button">
+                <form action="/envelopes/distribute-funds" method="POST">
+                    <label>Add to Which Envelope</label>
+                    <!--<select name="envelopes" id="envelopes" required>-->
+
+                    <% if (envelopes.length > 0) { %>
+                        <% let i = 0 %>
+                            <% envelopes.forEach(envelope => { %>
+                                <% i = i +1 %>
+                                    <!--<option value="['<%= envelope._id %>','<%= envelope.balance %>']"><%= envelope.category %></option>-->
+                                    <label style="display: block;" value="['<%= envelope._id %>','<%= envelope.balance %>']"><%= envelope.category %>---<%= envelope.balance %>
+                                    <input type="number" id="testId<%=i%>" name="testId<%=i%>" style="display: block;"></label>
+                                    <input type="hidden" id="id<%=i%>" name="id<%=i%>" value="<%= envelope._id%>">
+                                    <input type="hidden" id="balance<%=i%>" name="balance<%=i%>" value="<%= envelope.balance%>">
+                                    <% }) %>
+                                        <% } %>
+                                            <% if (envelopes.length <= 0) { %>
+                                                <!--<option>No envelopes created</option>-->
+
+                                                <!--</select>-->
+                                                <button class="btn-primary btn-lg"><a href="/envelopes/add-envelope" style="color: white;">Create Envelope</a><div class="wrapper-button">
                         <div class="lid one-button"></div>
                         <div class="envelope-button"></div>  
                     </div></button>
+                                                <% } %>
+                                                    <% if (envelopes.length > 0) { %>
+                                                        <!--
+                                                        </select>
+                                                        <label for="amount">Amount</label>
+                                                        <input id="amount" name="amount">
+                                                        <input type="hidden" id="total" name="total" value="<%= total %>">
+                                                        -->
+                                                        <button action="submit" class="btn-primary btn-lg">Add to<div class="wrapper-button">
+                            <div class="lid one-button"></div>
+                            <div class="envelope-button"></div>  
+                            </div></button>
+
+                                                        <% } %>
+
                 </form>
-                <button id="myBtn">Click</button>
-                <button id="subtractBtn">Subtract 50</button>
-                <div id="test" style="display: none;">Test</div>
+                <button id="testBtn1" class="btn-primary">Testing<div class="wrapper-button">
             </div>
+            <script>
+                var envLength = "<%= envelopes.length %>";
+                var currentTotal = Number("<%= total %>");
+                document.getElementById("distributionTotal").innerHTML = " " + "<%= total %>";
+                document.getElementById("testId1").addEventListener("focusout", updateTotal1);
+                document.getElementById("testId2").addEventListener("focusout", updateTotal2);
+                document.getElementById("testId3").addEventListener("focusout", updateTotal3);
+                document.getElementById("testId4").addEventListener("focusout", updateTotal4);
+                
+                
+                
+                function updateTotal1() {
+                    var x = document.getElementById("testId1");
+                    var currentVal = x.value;
+                    //var currentTotal = Number("<%= total %>");
+                    document.getElementById("distributionTotal").innerHTML =  currentTotal - currentVal;
+                    currentTotal = Number(currentTotal) - Number(currentVal);
+                    console.log(currentTotal);
+
+                }
+                function updateTotal2() {
+                    var x = document.getElementById("testId2");
+                    var currentVal = x.value;
+                    //var currentTotal = Number("<%= total %>");
+                    document.getElementById("distributionTotal").innerHTML =  currentTotal - currentVal;
+                    currentTotal = Number(currentTotal) - Number(currentVal);
+                    console.log(currentTotal);
+                }
+                function updateTotal3() {
+                    var x = document.getElementById("testId3");
+                    var currentVal = x.value;
+                    //var currentTotal = Number("<%= total %>");
+                    document.getElementById("distributionTotal").innerHTML =  currentTotal - currentVal;
+                    currentTotal = Number(currentTotal) - Number(currentVal);
+                    console.log(currentTotal);
+                }
+                function updateTotal4() {
+                    var x = document.getElementById("testId4");
+                    var currentVal = x.value;
+                    //var currentTotal = Number("<%= total %>");
+                    document.getElementById("distributionTotal").innerHTML =  currentTotal - currentVal;
+                    currentTotal = Number(currentTotal) - Number(currentVal);
+                    console.log(currentTotal);
+                }
+            </script>
             <%- include('../includes/footer.ejs') %>
-                <script>
-                    document.getElementById("test").innerHTML = total.value;
-                    document.getElementById('myBtn').addEventListener("click", displayTotal);
-                    document.getElementById('subtractBtn').addEventListener("click", subtract50);
 
-                    function displayTotal() {
-                        document.getElementById("test").style.display = "block";
-                    }
-
-                    function subtract50() {
-                        document.getElementById("test").innerHTML = total.value - 50;
-                    }
-                </script>
     </body>
 
 </html>
