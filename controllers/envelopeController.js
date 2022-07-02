@@ -50,6 +50,11 @@ const add_funds_post = (req, res) => {
 
 const distribute_funds_post = (req, res) => {
 
+    //envelope length
+    const envelopesLength = req.body.envelopesLength[0];
+
+    //loop to declare variables  experimental.
+
     const id1 = req.body.id1;
     const id2 = req.body.id2;
     const id3 = req.body.id3;
@@ -60,17 +65,16 @@ const distribute_funds_post = (req, res) => {
     const id8 = req.body.id8;
     const id9 = req.body.id9;
     const id10 = req.body.id10;
-
-    const amount1 = req.body.testId1;
-    const amount2 = req.body.testId2;
-    const amount3 = req.body.testId3;
-    const amount4 = req.body.testId4;
-    const amount5 = req.body.testId5;
-    const amount6 = req.body.testId6;
-    const amount7 = req.body.testId7;
-    const amount8 = req.body.testId8;
-    const amount9 = req.body.testId9;
-    const amount10 = req.body.testId10;
+    const id11 = req.body.id11;
+    const id12 = req.body.id12;
+    const id13 = req.body.id13;
+    const id14 = req.body.id14;
+    const id15 = req.body.id15;
+    const id16 = req.body.id16;
+    const id17 = req.body.id17;
+    const id18 = req.body.id18;
+    const id19 = req.body.id19;
+    const id20 = req.body.id20;
 
     const balance1 = req.body.balance1;
     const balance2 = req.body.balance2;
@@ -82,163 +86,55 @@ const distribute_funds_post = (req, res) => {
     const balance8 = req.body.balance8;
     const balance9 = req.body.balance9;
     const balance10 = req.body.balance10;
+    const balance11 = req.body.balance11;
+    const balance12 = req.body.balance12;
+    const balance13 = req.body.balance13;
+    const balance14 = req.body.balance14;
+    const balance15 = req.body.balance15;
+    const balance16 = req.body.balance16;
+    const balance17 = req.body.balance17;
+    const balance18 = req.body.balance18;
+    const balance19 = req.body.balance19;
+    const balance20 = req.body.balance20;
 
+    const amount1 = req.body.testId1;
+    const amount2 = req.body.testId2;
+    const amount3 = req.body.testId3;
+    const amount4 = req.body.testId4;
+    const amount5 = req.body.testId5;
+    const amount6 = req.body.testId6;
+    const amount7 = req.body.testId7;
+    const amount8 = req.body.testId8;
+    const amount9 = req.body.testId9;
+    const amount10 = req.body.testId10;
+    const amount11 = req.body.testId11;
+    const amount12 = req.body.testId12;
+    const amount13 = req.body.testId13;
+    const amount14 = req.body.testId14;
+    const amount15 = req.body.testId15;
+    const amount16 = req.body.testId16;
+    const amount17 = req.body.testId17;
+    const amount18 = req.body.testId18;
+    const amount19 = req.body.testId19;
+    const amount20 = req.body.testId20;
 
-    const newAmount = Number(balance1) + Number(amount1);
-    const newAmount2 = Number(balance2) + Number(amount2);
-    const newAmount3 = Number(balance3) + Number(amount3);
-    const newAmount4 = Number(balance4) + Number(amount4);
-    const newAmount5 = Number(balance5) + Number(amount5);
-    const newAmount6 = Number(balance6) + Number(amount6);
-    const newAmount7 = Number(balance7) + Number(amount7);
-    const newAmount8 = Number(balance8) + Number(amount8);
-    const newAmount9 = Number(balance9) + Number(amount9);
-    const newAmount10 = Number(balance10) + Number(amount10);
-
-    const envelope = Envelope.findByIdAndUpdate({ _id: id1 }, { balance: newAmount }, function(err, result) {
-        if (err) {
-            console.log(err);
-        } else {
-            //res.redirect('/');
-            console.log('Balance updated to ', newAmount);
-
-            const envelope2 = Envelope.findByIdAndUpdate({ _id: id2 }, { balance: newAmount2 }, function(err, result) {
-                if (err) {
-                    console.log(err);
-                    res.redirect('/');
-                } else {
-                    const envelope3 = Envelope.findByIdAndUpdate({ _id: id3 }, { balance: newAmount3 }, function(err, result) {
-                        if (err) {
-                            console.log(err);
-                            res.redirect('/');
-                        } else {
-                            const envelope4 = Envelope.findByIdAndUpdate({ _id: id4 }, { balance: newAmount4 }, function(err, result) {
-                                if (err) {
-                                    console.log(err);
-                                    res.redirect('/');
-                                } else {
-                                    const envelope5 = Envelope.findByIdAndUpdate({ _id: id5 }, { balance: newAmount5 }, function(err, result) {
-                                        if (err) {
-                                            console.log(err);
-                                            res.redirect('/');
-                                        } else {
-                                            const envelope6 = Envelope.findByIdAndUpdate({ _id: id6 }, { balance: newAmount6 }, function(err, result) {
-                                                if (err) {
-                                                    console.log(err);
-                                                    res.redirect('/');
-                                                } else {
-                                                    const envelope7 = Envelope.findByIdAndUpdate({ _id: id7 }, { balance: newAmount7 }, function(err, result) {
-                                                        if (err) {
-                                                            console.log(err);
-                                                            res.redirect('/');
-                                                        } else {
-                                                            const envelope8 = Envelope.findByIdAndUpdate({ _id: id8 }, { balance: newAmount8 }, function(err, result) {
-                                                                if (err) {
-                                                                    console.log(err);
-                                                                    res.redirect('/');
-                                                                } else {
-                                                                    const envelope9 = Envelope.findByIdAndUpdate({ _id: id9 }, { balance: newAmount9 }, function(err, result) {
-                                                                        if (err) {
-                                                                            console.log(err);
-                                                                            res.redirect('/');
-                                                                        } else {
-                                                                            const envelope10 = Envelope.findByIdAndUpdate({ _id: id10 }, { balance: newAmount10 }, function(err, result) {
-                                                                                if (err) {
-                                                                                    console.log(err);
-                                                                                    res.redirect('/');
-                                                                                } else {
-                                                                                    res.redirect('/');
-                                                                                }
-                                                                            })
-                                                                            console.log('Balance updated to ', newAmount10);
-                                                                        }
-                                                                    })
-                                                                    console.log('Balance updated to ', newAmount9);
-                                                                }
-                                                            })
-                                                            console.log('Balance updated to ', newAmount8);
-                                                        }
-                                                    })
-                                                    console.log('Balance updated to ', newAmount7);
-                                                }
-                                            })
-                                            console.log('Balance updated to ', newAmount6);
-                                        }
-                                    })
-                                    console.log('Balance updated to ', newAmount5);
-                                }
-                            })
-                            console.log('Balance updated to ', newAmount4);
-                        }
-                    })
-                    console.log('Balance updated to ', newAmount3);
-                }
-            })
-
-            console.log('Balance updated to ', newAmount2);
-        }
-    })
+    const idArray = [id1, id2, id3, id4, id5, id6, id7, id8, id9, id10, id11, id12, id13, id14, id15, id16, id17, id18, id19, id20];
+    const balanceArray = [balance1, balance2, balance3, balance4, balance5, balance6, balance7, balance8, balance9, balance10, balance11, balance12, balance13, balance14, balance15, balance16, balance17, balance18, balance19, balance20];
+    const amountArray = [amount1, amount2, amount3, amount4, amount5, amount6, amount7, amount8, amount9, amount10, amount11, amount12, amount13, amount14, amount15, amount16, amount17, amount18, amount19, amount20];
 
 
 
-
-
-
-    /*
-    let balance = '';
-    for (let i = 29; i < req.body.envelopes.length - 2; i++) {
-        balance = balance + req.body.envelopes[i];
-        //console.log(balance);
-    }
-    console.log('balance after the loop is ', balance);
-    const numBalance = Number(balance);
-    const numAmount = Number(req.body.amount);
-    console.log('the numBalance after cast into num is ', numBalance);
-    console.log('the numAmount after cast into num is ', numAmount);
-    const funds = req.body.total - req.body.amount;
-    let envelopeId = [];
-    envelopeId = req.body.envelopes;
-    let id = '';
-    const newAmount = numBalance + numAmount;
-    console.log(newAmount);
-    for (let i = 2; i < 26; i++) {
-        id = id + req.body.envelopes[i];
-    }
-
-    console.log('this is the balance', balance);
-    console.log('this is the envelope id', envelopeId);
-    console.log('the id', id);
-    */
-
-    /*
-    const envelope = Envelope.findByIdAndUpdate({ _id: id }, { balance: newAmount }, function(err, result) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("balance updated. I hope");
-            res.redirect('/envelopes/add-funds');
-        }
-    })
-    */
-
-
-    //Envelope.findByIdAndUpdate(envelopeId, { balance: funds }, function(err, docs) {
-    //    if (err) {
-    //        console.log(err)
-    //    } else {
-    //        console.log("Updated Envelope balance : ", docs);
-    //    }
-    //})
-
-    /*
-    Envelope.find() // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
-        .then((result) => {
-            res.render('envelopes/distribute-funds', { title: 'Distribute Funds', total: funds, envelopes: result });
+    for (let i = 0; i < envelopesLength; i++) {
+        const newAmount = Number(balanceArray[i]) + Number(amountArray[i]);
+        const envelope = Envelope.findByIdAndUpdate({ _id: idArray[i] }, { balance: newAmount }, function(err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Balance of', i, 'updated to ', newAmount);
+            }
         })
-        .catch((err) => {
-            console.log(err);
-        })
-        */
+    }
+    setTimeout(() => { res.redirect('/') }, 1500);
 }
 
 const transaction_create_post = (req, res) => {

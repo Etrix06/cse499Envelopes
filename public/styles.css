@@ -246,6 +246,11 @@
         font-size: 1.2em;
         cursor: pointer;
     }
+    /* Add funds styles*/
+    
+    .warningP {
+        color: red;
+    }
     /* Envelope opening*/
     
     * {

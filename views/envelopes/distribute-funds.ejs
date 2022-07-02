@@ -29,6 +29,7 @@
                                     <input type="number" id="testId<%=i%>" name="testId<%=i%>" style="display: block;"></label>
                                     <input type="hidden" id="id<%=i%>" name="id<%=i%>" value="<%= envelope._id%>">
                                     <input type="hidden" id="balance<%=i%>" name="balance<%=i%>" value="<%= envelope.balance%>">
+                                    <input type="hidden" id="envelopesLength" name="envelopesLength" value="<%= envelopes.length%>">
                                     <% }) %>
                                         <% } %>
                                             <% if (envelopes.length <= 0) { %>
@@ -47,63 +48,196 @@
                                                         <input id="amount" name="amount">
                                                         <input type="hidden" id="total" name="total" value="<%= total %>">
                                                         -->
-                                                        <button action="submit" class="btn-primary btn-lg">Add to<div class="wrapper-button">
+                                                        <button id="disabled" action="submit" class="btn-primary btn-lg">Add to<div class="wrapper-button">
                             <div class="lid one-button"></div>
                             <div class="envelope-button"></div>  
                             </div></button>
+                                                        <p class="warningP" id="warningP">Funds remain</p>
 
                                                         <% } %>
 
                 </form>
-                <button id="testBtn1" class="btn-primary">Testing<div class="wrapper-button">
             </div>
             <script>
-                var envLength = "<%= envelopes.length %>";
-                var currentTotal = Number("<%= total %>");
+                document.getElementById('testId1').focus(); //sets focus on first input
+                //document.getElementById('disabled').disabled = true; //makes add to button disabled
+                //document.getElementById('disabled').style.opacity = .5 //makes add to button opaque
+
+                var envLength = "<%= envelopes.length %>"; //number of envelopes in case needed for loop
+                var currentTotal = Number("<%= total %>"); //this is the current total updating displayed total  may need changing
+                //var finalTotal = 0;                        //this is the total when button is clicked.
 
                 // This displays the total on add funds screen
-                document.getElementById("distributionTotal").innerHTML = " " + "<%= total %>";
-                
+                document.getElementById("distributionTotal").innerHTML = " " + currentTotal;
+
                 // event listeners for all the dynamic envelopes  (I need a loop here.)
                 document.getElementById("testId1").addEventListener("focusout", updateTotal1);
                 document.getElementById("testId2").addEventListener("focusout", updateTotal2);
                 document.getElementById("testId3").addEventListener("focusout", updateTotal3);
                 document.getElementById("testId4").addEventListener("focusout", updateTotal4);
-                
-                
-                
+                document.getElementById("testId5").addEventListener("focusout", updateTotal5);
+                document.getElementById("testId6").addEventListener("focusout", updateTotal6);
+                document.getElementById("testId7").addEventListener("focusout", updateTotal7);
+                document.getElementById("testId8").addEventListener("focusout", updateTotal8);
+
+                //event listener for button on click
+                document.getElementById("disabled").addEventListener("onclick", sumUpTotal);
+
                 function updateTotal1() {
                     var x = document.getElementById("testId1");
-                    var currentVal = x.value;
+                    var currentVal = x.value; //these two lines get the value of testId1 into currentVal
                     //var currentTotal = Number("<%= total %>");
-                    document.getElementById("distributionTotal").innerHTML =  currentTotal - currentVal;
-                    currentTotal = Number(currentTotal) - Number(currentVal);
+                    document.getElementById("distributionTotal").innerHTML = currentTotal - currentVal; // this line changes the display of funds to distribute
+                    currentTotal = Number(currentTotal) - Number(currentVal); //this line changes the value of currentTotal, may need to change
                     console.log(currentTotal);
+                    if (currentVal > 0) {
+                        //document.getElementById('testId1').disabled = true;
+                    } else if (currentTotal <= 0) {
+                        disableAll();
+                    } else if (currentTotal === 0) {
+                        document.getElementById('disabled').disabled = false;
+                        document.getElementById('disabled').style.opacity = 1;
+                        document.getElementById('warningP').style.display = none;
+                    }
 
                 }
+
                 function updateTotal2() {
                     var x = document.getElementById("testId2");
                     var currentVal = x.value;
                     //var currentTotal = Number("<%= total %>");
-                    document.getElementById("distributionTotal").innerHTML =  currentTotal - currentVal;
+                    document.getElementById("distributionTotal").innerHTML = currentTotal - currentVal;
                     currentTotal = Number(currentTotal) - Number(currentVal);
                     console.log(currentTotal);
+                    if (currentVal > 0) {
+                        //document.getElementById('testId1').disabled = true;
+                    } else if (currentTotal <= 0) {
+                        disableAll();
+                    } else if (currentTotal === 0) {
+                        document.getElementById('disabled').disabled = false;
+                        document.getElementById('disabled').style.opacity = 1;
+                        document.getElementById('warningP').style.display = none;
+                    }
+
                 }
+
                 function updateTotal3() {
                     var x = document.getElementById("testId3");
                     var currentVal = x.value;
                     //var currentTotal = Number("<%= total %>");
-                    document.getElementById("distributionTotal").innerHTML =  currentTotal - currentVal;
+                    document.getElementById("distributionTotal").innerHTML = currentTotal - currentVal;
                     currentTotal = Number(currentTotal) - Number(currentVal);
                     console.log(currentTotal);
+                    if (currentVal > 0) {
+                        //document.getElementById('testId1').disabled = true;
+                    } else if (currentTotal <= 0) {
+                        disableAll();
+                    } else if (currentTotal === 0) {
+                        document.getElementById('disabled').disabled = false;
+                        document.getElementById('disabled').style.opacity = 1;
+                        document.getElementById('warningP').style.display = none;
+                    }
                 }
+
                 function updateTotal4() {
                     var x = document.getElementById("testId4");
                     var currentVal = x.value;
                     //var currentTotal = Number("<%= total %>");
-                    document.getElementById("distributionTotal").innerHTML =  currentTotal - currentVal;
+                    document.getElementById("distributionTotal").innerHTML = currentTotal - currentVal;
                     currentTotal = Number(currentTotal) - Number(currentVal);
                     console.log(currentTotal);
+                    if (currentVal > 0) {
+                        //document.getElementById('testId1').disabled = true;
+                    } else if (currentTotal <= 0) {
+                        disableAll();
+                    } else if (currentTotal === 0) {
+                        document.getElementById('disabled').disabled = false;
+                        document.getElementById('disabled').style.opacity = 1;
+                        document.getElementById('warningP').style.display = none;
+                    }
+                }
+
+                function updateTotal5() {
+                    var x = document.getElementById("testId5");
+                    var currentVal = x.value;
+                    //var currentTotal = Number("<%= total %>");
+                    document.getElementById("distributionTotal").innerHTML = currentTotal - currentVal;
+                    currentTotal = Number(currentTotal) - Number(currentVal);
+                    console.log(currentTotal);
+                    if (currentVal > 0) {
+                        //document.getElementById('testId1').disabled = true;
+                    } else if (currentTotal <= 0) {
+                        disableAll();
+                    } else if (currentTotal === 0) {
+                        document.getElementById('disabled').disabled = false;
+                        document.getElementById('disabled').style.opacity = 1;
+                        document.getElementById('warningP').style.display = none;
+                    }
+                }
+
+                function updateTotal6() {
+                    var x = document.getElementById("testId6");
+                    var currentVal = x.value;
+                    //var currentTotal = Number("<%= total %>");
+                    document.getElementById("distributionTotal").innerHTML = currentTotal - currentVal;
+                    currentTotal = Number(currentTotal) - Number(currentVal);
+                    console.log(currentTotal);
+                    if (currentVal > 0) {
+                        //document.getElementById('testId1').disabled = true;
+                    } else if (currentTotal <= 0) {
+                        disableAll();
+                    } else if (currentTotal === 0) {
+                        document.getElementById('disabled').disabled = false;
+                        document.getElementById('disabled').style.opacity = 1;
+                        document.getElementById('warningP').style.display = none;
+                    }
+                }
+
+                function updateTotal7() {
+                    var x = document.getElementById("testId7");
+                    var currentVal = x.value;
+                    //var currentTotal = Number("<%= total %>");
+                    document.getElementById("distributionTotal").innerHTML = currentTotal - currentVal;
+                    currentTotal = Number(currentTotal) - Number(currentVal);
+                    console.log(currentTotal);
+                    if (currentVal > 0) {
+                        //document.getElementById('testId1').disabled = true;
+                    } else if (currentTotal <= 0) {
+                        disableAll();
+                    } else if (currentTotal === 0) {
+                        document.getElementById('disabled').disabled = false;
+                        document.getElementById('disabled').style.opacity = 1;
+                        document.getElementById('warningP').style.display = none;
+                    }
+                }
+
+                function updateTotal8() {
+                    var x = document.getElementById("testId8");
+                    var currentVal = x.value;
+                    //var currentTotal = Number("<%= total %>");
+                    document.getElementById("distributionTotal").innerHTML = currentTotal - currentVal;
+                    currentTotal = Number(currentTotal) - Number(currentVal);
+                    console.log(currentTotal);
+                    if (currentVal > 0) {
+                        //document.getElementById('testId1').disabled = true;
+                    } else if (currentTotal <= 0) {
+                        disableAll();
+                    } else if (currentTotal === 0) {
+                        document.getElementById('disabled').disabled = false;
+                        document.getElementById('disabled').style.opacity = 1;
+                        document.getElementById('warningP').style.display = none;
+                    }
+                }
+
+                function disableAll() {
+                    //document.getElementById("testId1").disabled = true;
+                    //document.getElementById("testId2").disabled = true;
+                    //document.getElementById("testId3").disabled = true;
+                    //document.getElementById("testId4").disabled = true;
+                    //document.getElementById("testId5").disabled = true;
+                    //document.getElementById("testId6").disabled = true;
+                    //document.getElementById("testId7").disabled = true;
+                    //document.getElementById("testId8").disabled = true;
                 }
             </script>
             <%- include('../includes/footer.ejs') %>

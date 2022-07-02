@@ -34,8 +34,8 @@
                     <h3>Enter Transaction</h3>
                     <label for="amount">Amount:</label>
                     <input type="number" id="amount" name="amount" required>
-                    <label for="nameOfTransaction">Name</label>
-                    <input type="text" id="nameOfTransaction" name="nameOfTransaction">
+                    <!--<label for="nameOfTransaction">Name</label>
+                    <input type="text" id="nameOfTransaction" name="nameOfTransaction"> -->
                     <input type="hidden" id="balance" name="balance" value="<%= envelope.balance%>">
                     <input type="hidden" id="budgeted" name="budgeted" value="<%= envelope.budgeted%>">
                     <input type="hidden" id="id" name="id" value="<%= envelope._id%>">
@@ -48,6 +48,7 @@
             <!-- <a class="delete" data-doc="<%= envelope._id  %>"><img src="/trashcan.svg" alt="Delete Envelope">Delete Envelope</a>-->
             <%- include('../includes/footer.ejs') %>
                 <script>
+                    document.getElementById('amount').focus();
                     const trashcan = document.querySelector('a.delete');
 
                     trashcan.addEventListener('click', (e) => {
