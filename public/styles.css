@@ -190,18 +190,27 @@
     }
     
     .transfer {
-        top: 0;
-        right: 0;
+        top: 5;
+        right: 1;
         border-radius: 50%;
         padding: 8px;
-        margin-bottom: 5px;
+    }
+    
+    .transfer:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px black;
     }
     
     .transaction {
-        top: 1;
-        right: 0;
+        top: 5;
+        right: 1;
         border-radius: 50%;
         padding: 8px;
+    }
+    
+    .transaction:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px black;
     }
     
     .delete {
@@ -531,6 +540,16 @@
         border: 0;
         font-size: 1.2em;
         cursor: pointer;
+    }
+    
+    @media screen and (max-width: 1120px) {
+        #right {
+            margin-left: 70%;
+            color: white;
+            border: 3px solid green;
+            padding: 10px;
+            background-color: green;
+        }
     }
     
     @media screen and (max-width: 765px) {
