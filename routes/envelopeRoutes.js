@@ -15,15 +15,23 @@ router.post('/add-funds', envelopeController.add_funds_post);
 
 router.post('/distribute-funds', envelopeController.distribute_funds_post);
 
-router.get('/transfer', envelopeController.transfer_index);
+//router.get('/edit', envelopeController.envelope_edit);
+
+router.get('/transfer', envelopeController.envelope_transfer);
 
 router.get('/transactions', envelopeController.transaction_index);
 
 router.post('/add-transaction', envelopeController.transaction_create_post);
 
+router.post('/edit/envelope/:id', envelopeController.envelope_edit_post);
+
+router.get('/edit/:id', envelopeController.envelope_edit_get);
+
 router.get('/:id', envelopeController.envelope_details);
 
 router.delete('/:id', envelopeController.envelope_delete);
+
+
 
 
 

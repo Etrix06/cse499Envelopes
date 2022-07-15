@@ -13,9 +13,9 @@ const envelope_index = (req, res) => {
         })
 }
 
-const transfer_index = (req, res) => {
-    res.render('envelopes/transfer', { title: 'Transfers' });
-}
+
+
+
 
 const transaction_index = (req, res) => {
     //res.render('envelopes/transactions', { title: 'Transactions' });
@@ -178,10 +178,36 @@ const envelope_create_post = (req, res) => {
         });
 }
 
+const envelope_transfer = (req, res) => {
+    res.render('envelopes/transfer', { title: 'Transfers' });
+}
+
+const envelope_edit_get = (req, res) => {
+    const id = req.params.id;
+    Envelope.findById(id)
+        .then(result => {
+            res.status(404).render('envelopes/edit', { envelope: result, title: 'Edit Envelope' });
+        })
+        .catch(err => {
+            res.render('404', { title: 'Envelope not found' });
+        });
+    //res.render('envelopes/edit', { title: 'Edit' });
+}
+
+const envelope_edit_post = (req, res) => {
+    const id = req.params.id;
+    Envelope.findByIdAndUpdate(id, { $set: req.body }, { new: true }, function(err, result) {
+        if (err) {
+            console.log(err);
+        }
+        res.redirect('/envelopes');
+    });
+}
+
 const envelope_delete = (req, res) => {
     const id = req.params.id;
 
-    Envelope.findByIdAndDelete(id)
+    Envelope.findByIdAndDelete(id, )
         .then(result => {
             res.json({ redirect: '/envelopes' });
         })
@@ -192,7 +218,8 @@ const envelope_delete = (req, res) => {
 
 module.exports = {
     envelope_index,
-    transfer_index,
+    envelope_edit_get,
+    envelope_transfer,
     transaction_index,
     add_funds_get,
     add_funds_post,
@@ -201,5 +228,6 @@ module.exports = {
     envelope_details,
     envelope_create_get,
     envelope_create_post,
+    envelope_edit_post,
     envelope_delete
 }
