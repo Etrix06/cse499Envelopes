@@ -155,7 +155,7 @@ const envelope_details = (req, res) => {
     const id = req.params.id;
     Envelope.findById(id)
         .then(result => {
-            res.status(404).render('envelopes/details', { envelope: result, title: 'Envelope Details' });
+            res.status(200).render('envelopes/details', { envelope: result, title: 'Envelope Details' });
         })
         .catch(err => {
             res.render('404', { title: 'Envelope not found' });
@@ -178,20 +178,59 @@ const envelope_create_post = (req, res) => {
         });
 }
 
-const envelope_transfer = (req, res) => {
-    res.render('envelopes/transfer', { title: 'Transfers' });
+const envelope_transfer_get = (req, res) => {
+    const id = req.params.id;
+    Envelope.findById(id)
+        .then(result => {
+            res.status(200).render('envelopes/transfer', { envelope: result, title: 'Transfers' });
+        })
+        .catch(err => {
+            res.render('404', { title: 'Envelope not found' });
+        });
+}
+
+const envelope_transfer_post = (req, res) => {
+    const id = req.params.id;
+    const funds = req.body;
+    let balance = 0;
+    let newBalance = 0;
+    Envelope.findById(id)
+        .then(result => {
+            console.log('result.balance is ' + result.balance);
+            balance = result.balance;
+            newBalance = balance - funds.total;
+            console.log('funds to be subtracted is: ', funds.total);
+            console.log('new balance is ' + newBalance);
+            Envelope.findByIdAndUpdate(id, { balance: newBalance }, { new: true }, function(err, result) {
+                console.log('transaction updated here');
+                if (err) {
+                    console.log(err);
+                }
+            });
+        });
+
+    Envelope.find() // we can add the sort method at the end of find .sort({ createdAt: -1})   this makes newest added show first
+        .then((result) => {
+            console.log('when does this happen');
+            res.render('envelopes/distribute-funds', { title: 'Distribute Funds', total: funds.total, envelopes: result });
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
+
 }
 
 const envelope_edit_get = (req, res) => {
     const id = req.params.id;
     Envelope.findById(id)
         .then(result => {
-            res.status(404).render('envelopes/edit', { envelope: result, title: 'Edit Envelope' });
+            res.status(200).render('envelopes/edit', { envelope: result, title: 'Edit Envelope' });
         })
         .catch(err => {
             res.render('404', { title: 'Envelope not found' });
         });
-    //res.render('envelopes/edit', { title: 'Edit' });
+
 }
 
 const envelope_edit_post = (req, res) => {
@@ -219,7 +258,8 @@ const envelope_delete = (req, res) => {
 module.exports = {
     envelope_index,
     envelope_edit_get,
-    envelope_transfer,
+    envelope_transfer_get,
+    envelope_transfer_post,
     transaction_index,
     add_funds_get,
     add_funds_post,

@@ -15,9 +15,19 @@
                 </h2>
                 <div class="content">
 
-
+                    <div class="add-envelope content">
+                        <form action="/envelopes/transfer-funds/<%= envelope._id%>" method="POST">
+                            <label for="total">Amount to be transferred from: <%=envelope.category%> </label>
+                            <input type="number" id="total" name="total" required>
+                            <button class="btn-primary btn-lg">Select<div class="wrapper-button">
+                                <div class="lid one-button"></div>
+                                
+                                <div class="envelope-button"></div>
+                                
+                            </div></button>
+                        </form>
+                    </div>
                     <%- include('../includes/footer.ejs') %>
-
     </body>
 
 </html>
