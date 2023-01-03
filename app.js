@@ -8,8 +8,8 @@ const { render, cookie } = require('express/lib/response');
 
 //routes
 const envelopeRoutes = require('./routes/envelopeRoutes');
-const authRoutes = require('./routes/authRoutes');
-const { requireAuth, checkUser } = require('./middleware/is-auth');
+//const authRoutes = require('./routes/authRoutes');
+//const { requireAuth, checkUser } = require('./middleware/is-auth');
 
 //express app
 const app = express();
@@ -39,19 +39,19 @@ app.use(express.json());
 app.use(cookieParser());
 
 //routes
-app.get('*', checkUser);
+//app.get('*', checkUser);
 
 app.get('/', (req, res, next) => {
-    res.render('home', { title: 'Home' });
+    res.redirect('/envelopes');
 });
 
-app.get('/login', (req, res, next) => {
-    res.render('login', { title: 'Login' });
-});
+//app.get('/login', (req, res, next) => {
+//    res.render('login', { title: 'Login' });
+//});
 
-app.get('/signup', (req, res, next) => {
-    res.render('signup', { title: 'Sign Up' });
-});
+//app.get('/signup', (req, res, next) => {
+//    res.render('signup', { title: 'Sign Up' });
+//});
 
 app.get('/about', (req, res, next) => {
     res.render('about', { title: 'About Us' });
@@ -60,10 +60,10 @@ app.get('/about', (req, res, next) => {
 
 
 //envelope routes
-app.use('/envelopes', requireAuth, envelopeRoutes);
+app.use('/envelopes', envelopeRoutes);
 
 //auth routes
-app.use(authRoutes);
+//app.use(authRoutes);
 
 //404 Page
 app.use((req, res, next) => {

@@ -6,69 +6,56 @@
     <body>
 
         <%- include('../includes/nav.ejs') %>
+            <% if (envelopes.length > 0) { %>
+                <a class="right" href="/envelopes/add-funds">Add Funds</a>
+                <% } %>
 
-            <div class="envelopes content">
-                <h2>Your Envelopes</h2>
+                    <div class="envelopes content">
+                        <h2>Your Envelopes</h2>
 
-                <!--
-                <div class="letter-image">
-                    <div class="animated-mail">
-                        <div class="back-fold"></div>
-                        <div class="letter">
-                            <div class="letter-border"></div>
-                            <div class="letter-title"></div>
-                            <div class="letter-context"></div>
-                            <div class="letter-stamp">
-                                <div class="letter-stamp-inner"></div>
-                            </div>
-                        </div>
-                        <div class="top-fold"></div>
-                        <div class="body"></div>
-                        <div class="left-fold"></div>
-                    </div>
-                    -->
-                <% if (envelopes.length > 0) { %>
-                    <% envelopes.forEach(envelope => { %>
-                        <div class="inline">
-                            <h3 class="category">
-                                <%= envelope.category %>
-                            </h3>
-                            <a class="single" href="/envelopes/<%= envelope._id %>">
-                                <div class="wrapper">
-                                    <div class="lid one"></div>
-                                    <div class="lid two"></div>
-                                    <div class="envelope"></div>
-                                    <div class="letter">
-                                        <p>$
-                                            <%= envelope.balance %>
-                                        </p>
-                                        <h6>Click envelope to input transaction.</h6>
-                                    </div>
-                                </div>
-                            </a>
-                            <p class="remaining">$
-                                <%= envelope.balance %> remaining</p>
-                            <p class="budgeted">from $
-                                <%=envelope.budgeted %> Budgeted</p>
-                        </div>
-                        <% }) %>
 
-                            <% } %>
+                        <% if (envelopes.length > 0) { %>
+                            <% envelopes.forEach(envelope => { %>
                                 <div class="inline">
-                                    <a class="link" href="/envelopes/add-envelope">
-                                        <div class="empty-wrapper">
-                                            <div class="empty-lid empty-one"></div>
-                                            <div class="empty-lid empty-two"></div>
-                                            <div class="empty-envelope"></div>
-
-                                            <h6>Create new envelope</h6>
-
-                                        </div>create envelope +</a>
-                                    <p class="white">Click to Create new envelope.</p>
+                                    <h3 class="category">
+                                        <%= envelope.category %>
+                                    </h3>
+                                    <a class="single" href="/envelopes/<%= envelope._id %>">
+                                        <div class="wrapper">
+                                            <div class="lid one"></div>
+                                            <div class="lid two"></div>
+                                            <div class="envelope"></div>
+                                            <div class="letter">
+                                                <p>$
+                                                    <%= envelope.balance %>
+                                                </p>
+                                                <h6>Click envelope to input transaction.</h6>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <p class="remaining">$
+                                        <%= envelope.balance %> remaining</p>
+                                    <p class="budgeted">from $
+                                        <%=envelope.budgeted %> Budgeted</p>
                                 </div>
+                                <% }) %>
 
-            </div>
-            <%- include('../includes/footer.ejs') %>
+                                    <% } %>
+                                        <div class="inline">
+                                            <a class="link" href="/envelopes/add-envelope">
+                                                <div class="empty-wrapper">
+                                                    <div class="empty-lid empty-one"></div>
+                                                    <div class="empty-lid empty-two"></div>
+                                                    <div class="empty-envelope"></div>
+
+                                                    <h6>Create new envelope</h6>
+
+                                                </div>create envelope +</a>
+                                            <p class="white">Click to Create new envelope.</p>
+                                        </div>
+
+                    </div>
+                    <%- include('../includes/footer.ejs') %>
     </body>
 
 </html>

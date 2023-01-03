@@ -153,16 +153,81 @@
         font-weight: 300;
         text-transform: uppercase;
     }
+    
+    .right {
+        float: right;
+        color: white;
+        border: 3px solid green;
+        padding: 10px;
+        background-color: green;
+    }
+    
+    .right:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px darkgreen;
+        color: green;
+        background-color: white;
+    }
+    
+    #right {
+        margin-left: 90%;
+        color: white;
+        border: 3px solid green;
+        padding: 10px;
+        background-color: green;
+    }
+    
+    #right:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px darkgreen;
+        color: green;
+        background-color: white;
+    }
     /* details styles */
     
     .details {
         position: relative;
     }
     
+    .transfer {
+        top: 5;
+        right: 1;
+        border-radius: 50%;
+        padding: 8px;
+    }
+    
+    .transfer:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px black;
+    }
+    
+    .edit {
+        top: 5;
+        right: 1;
+        border-radius: 50%;
+        padding: 8px;
+    }
+    
+    .edit:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px black;
+    }
+    
+    .transaction {
+        top: 5;
+        right: 1;
+        border-radius: 50%;
+        padding: 8px;
+    }
+    
+    .transaction:hover {
+        cursor: pointer;
+        box-shadow: 1px 2px 3px black;
+    }
+    
     .delete {
-        position: absolute;
-        top: 0;
-        right: 0;
+        top: 5;
+        right: 1;
         border-radius: 50%;
         padding: 8px;
     }
@@ -201,6 +266,11 @@
         border: 0;
         font-size: 1.2em;
         cursor: pointer;
+    }
+    /* Add funds styles*/
+    
+    .warningP {
+        color: red;
     }
     /* Envelope opening*/
     
@@ -325,7 +395,7 @@
         border-radius: 15px;
         z-index: 2;
         transition: 0.5s;
-        background-image: url(./Money.png);
+        /*background-image: url(./Money.png);*/
     }
     
     .empty-letter {
@@ -452,4 +522,120 @@
         border-bottom: 10px solid #C4DFF0;
         border-left: 15px solid #a4d4f2;
         z-index: 3;
+    }
+    
+    .invisible {
+        color: FFFFFF;
+    }
+    
+    .add-transaction form {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    .add-transaction input,
+    .add-transaction textarea {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+        padding: 8px;
+    }
+    
+    .add-transaction label {
+        display: block;
+        margin-top: 24px;
+    }
+    
+    .add-transaction button {
+        margin-top: 20px;
+        padding: 6px;
+        border: 0;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+    
+    @media screen and (max-width: 1120px) {
+        #right {
+            margin-left: 70%;
+            color: white;
+            border: 3px solid green;
+            padding: 10px;
+            background-color: green;
+        }
+    }
+    
+    @media screen and (max-width: 765px) {
+        nav a {
+            font-size: .95em;
+        }
+        nav p {
+            font-size: .95em;
+        }
+        nav li {
+            font-size: .95em;
+        }
+        .add-envelope form {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        body {
+            font-size: .85em;
+        }
+    }
+    
+    @media screen and (max-width: 535px) {
+        nav a {
+            font-size: .95em;
+        }
+        nav p {
+            font-size: .95em;
+        }
+        nav li {
+            font-size: .95em;
+        }
+        .add-envelope form {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        body {
+            font-size: .95em;
+        }
+    }
+    
+    @media screen and (max-width: 485px) {
+        nav a {
+            font-size: .85em;
+        }
+        nav p {
+            font-size: .85em;
+        }
+        nav li {
+            font-size: .85em;
+        }
+        .add-envelope form {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        body {
+            font-size: .85em;
+        }
+    }
+    
+    @media screen and (max-width: 400px) {
+        nav a {
+            font-size: .75em;
+        }
+        nav p {
+            font-size: .75em;
+        }
+        nav li {
+            font-size: .75em;
+        }
+        .add-envelope form {
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        body {
+            font-size: .85em;
+        }
     }

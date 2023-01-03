@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../includes/head.ejs') %>
+
+    <body>
+
+        <%- include('../includes/nav.ejs') %>
+
+            <div class="details content">
+
+                <h2>
+                    Transactions
+
+                </h2>
+                <% if (transactions.length > 0) { %>
+
+                    <% transactions.forEach(transaction => { %>
+                        <div class="inline">
+                            <h3 class="category">
+                                Date:</h3>
+                            <%=transaction.createdAt.toDateString() %>
+                                <h3 class="category">Name:</h3>
+                                <%= transaction.nameOfTransaction %>
+                                    <h3 class="category">Amount:</h3>
+                                    $
+                                    <%=transaction.amount %>
+                                        <h3 class="category">Category</h3>
+                                        <%=transaction.category%>
+                        </div>
+                        <% }) %>
+
+                            <% } else { %>
+                                No Transactions
+                                <% } %>
+                                    <div class="content">
+
+
+                                        <%- include('../includes/footer.ejs') %>
+
+    </body>
+
+</html>
